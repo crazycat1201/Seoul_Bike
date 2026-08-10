@@ -9,7 +9,7 @@
 | [`datasets/seoul_bike/`](./datasets/seoul_bike/) | [`Seoul_Bike_Insight_Analysis.ipynb`](./datasets/seoul_bike/Seoul_Bike_Insight_Analysis.ipynb) | [`docs/seoul_bike_report.html`](./docs/seoul_bike_report.html) | 서울 공공자전거(따릉이) 신규가입자·외국인 대여 트렌드, 코로나 전후 비교, 대여소 핫스팟 |
 | [`datasets/rail_parking/`](./datasets/rail_parking/) | [`Rail_Parking_Insight_Analysis.ipynb`](./datasets/rail_parking/Rail_Parking_Insight_Analysis.ipynb) | [`docs/rail_parking_report.html`](./docs/rail_parking_report.html) | 한국철도공사 역별 주차장 공급 규모·지역본부 간 격차 분석 |
 
-시각화 리포트는 `docs/`에 정적 HTML로 저장되어 있습니다. GitHub은 저장소 화면에서 HTML을 코드로만 보여주므로, 실제 웹페이지로 열어보려면 **저장소 Settings → Pages → Source를 `main` 브랜치 / `docs` 폴더로 설정**하세요. 활성화하면 `https://crazycat1201.github.io/Seoul_Bike/`에서 [`docs/index.html`](./docs/index.html)을 통해 두 리포트에 바로 접근할 수 있습니다(설정 전까지는 파일을 내려받아 로컬에서 열면 됩니다).
+시각화 리포트는 `docs/`에 정적 HTML로 저장되어 있고, GitHub Pages(Settings → Pages → `main` / `docs`)로 배포되어 있습니다. **https://crazycat1201.github.io/Public-Data-Insights/** 에서 [`docs/index.html`](./docs/index.html)을 통해 두 리포트에 바로 접근할 수 있습니다.
 
 ### 실행 방법
 
