@@ -1,39 +1,43 @@
-# Seoul_Bike — 서울 공공자전거(따릉이) 데이터 분석
+# 공공데이터 인사이트 분석 모음
 
-서울시 공공자전거(따릉이) 공개 데이터를 정제·분석해 이용 트렌드와 개선 액션을 도출하는 프로젝트입니다.
+한국 공공데이터를 정제·분석해 인사이트와 실행 가능한 개선 액션을 도출하는 프로젝트입니다. 데이터셋별로 폴더를 분리하고, 공통으로 재발생하는 정제 로직만 `common/`에 모아 재사용합니다.
 
-## 핵심 분석
+## 데이터셋
 
-**[`Seoul_Bike_Insight_Analysis.ipynb`](./Seoul_Bike_Insight_Analysis.ipynb)** — 저장소 상대 경로만으로 바로 실행되는 재현 가능한 분석 노트북입니다.
-
-- 신규가입자·외국인 대여 데이터를 하나로 정제·통합 (인코딩 불일치, 확장자 오표기, 연령/사용자 코드 불일치 등 원자료 이슈 처리)
-- 연도별·계절별·요일별·연령대별 트렌드
-- 코로나 전후 국내 이용 vs 외국인 이용 비교
-- 외국인 대여 대여소 쏠림도 및 핫스팟 개략도
-- 데이터에 기반한 개선 액션 플랜(즉시 실행 / 중기 / 장기)
+| 데이터셋 | 노트북 | 내용 |
+|---|---|---|
+| [`datasets/seoul_bike/`](./datasets/seoul_bike/) | [`Seoul_Bike_Insight_Analysis.ipynb`](./datasets/seoul_bike/Seoul_Bike_Insight_Analysis.ipynb) | 서울 공공자전거(따릉이) 신규가입자·외국인 대여 트렌드, 코로나 전후 비교, 대여소 핫스팟 |
+| [`datasets/rail_parking/`](./datasets/rail_parking/) | [`Rail_Parking_Insight_Analysis.ipynb`](./datasets/rail_parking/Rail_Parking_Insight_Analysis.ipynb) | 한국철도공사 역별 주차장 공급 규모·지역본부 간 격차 분석 |
 
 ### 실행 방법
 
 ```bash
 pip install pandas numpy matplotlib openpyxl
-jupyter notebook Seoul_Bike_Insight_Analysis.ipynb
+cd datasets/<데이터셋 폴더>
+jupyter notebook <노트북 파일>.ipynb
 ```
 
-## 데이터
-
-| 폴더 | 내용 | 기간 |
-|---|---|---|
-| `서울특별시 공공자전거 신규가입자 정보(일별)/` | 일별 신규가입자 수 (연령대·성별) | 2017-01 ~ 2021-06 |
-| `서울특별시 공공자전거 외국인 대여정보(월별)/` | 대여소별 외국인 대여/반납 건수 | 2017-01 ~ 2021-06 |
-
-원자료는 파일마다 인코딩(CP949/UTF-8), 컬럼명, 확장자(일부 `.xlsx`가 `.csv`로 잘못 저장됨)가 제각각입니다. 세부 이슈와 처리 방식은 노트북 1절과 5절(데이터 한계 및 방법론 노트)에 정리되어 있습니다.
+각 노트북은 자기 폴더의 `raw/` 하위 상대 경로만 사용하므로, 저장소를 클론한 뒤 바로 실행됩니다.
 
 ## 저장소 구조
 
 ```
-Seoul_Bike_Insight_Analysis.ipynb   # 현재 유지되는 분석 노트북
-legacy/                             # 초기 탐색용 노트북(더 이상 유지되지 않음, 기록 보존용)
-서울특별시 공공자전거 .../            # 원본 데이터
+datasets/
+├── seoul_bike/
+│   ├── raw/                          # 원본 데이터 (신규가입자·외국인 대여)
+│   ├── legacy/                       # 초기 탐색용 노트북 (더 이상 유지되지 않음)
+│   └── Seoul_Bike_Insight_Analysis.ipynb
+└── rail_parking/
+    ├── raw/                          # 원본 데이터 (역별 주차장 현황)
+    └── Rail_Parking_Insight_Analysis.ipynb
+common/
+└── data_utils.py                     # 데이터셋 2개 이상에서 재사용되는 정제 유틸(인코딩 자동 감지 등)
 ```
 
-`legacy/` 안의 두 노트북은 로컬 Windows 경로에 하드코딩되어 있어 그대로 실행되지 않습니다. 초기 탐색 과정 기록용으로만 남겨두었으니, 실제 분석은 `Seoul_Bike_Insight_Analysis.ipynb`를 참고하세요.
+## 새 데이터셋 추가하기
+
+1. `datasets/<이름>/raw/`에 원본 파일을 넣습니다.
+2. `datasets/<이름>/<이름>_Insight_Analysis.ipynb`를 만들고, 다음 5단 구조를 따릅니다: **①데이터 로드·정제(원자료 이슈 기록) → ②핵심 세그먼트별 트렌드 → ③가장 중요한 비교/대조 → ④데이터에 근거한 개선 액션 플랜(즉시/중기/장기) → ⑤데이터 한계 노트**.
+3. 인코딩 자동 감지처럼 다른 데이터셋과 겹치는 정제 로직이 생기면 `common/data_utils.py`로 옮겨 재사용합니다. 데이터셋 하나에서만 쓰는 정제 로직은 해당 노트북에 그대로 둡니다(섣부른 추상화 지양).
+
+공공데이터 CSV는 인코딩(UTF-8/CP949/EUC-KR)이 파일마다 다르고, 컬럼에 원자료 자체 오류(오탈자, 잘못된 카테고리 매핑 등)가 섞여 있는 경우가 많습니다. 각 노트북의 1절과 마지막 절에서 실제로 발견한 이슈와 처리 방식을 투명하게 기록하는 것을 원칙으로 합니다.
