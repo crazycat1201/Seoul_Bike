@@ -1,0 +1,92 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>공공데이터 인사이트 리포트</title>
+<style>
+:root {
+  color-scheme: light;
+  --page-bg: #F4F8F6;
+  --surface: #FFFFFF;
+  --text-primary: #0E1917;
+  --text-secondary: #4B615A;
+  --text-muted: #839289;
+  --border: rgba(14,25,23,0.10);
+  --series-teal: #0D9985;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", "Roboto Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page-bg: #0C1412;
+    --surface: #121C19;
+    --text-primary: #F1F7F4;
+    --text-secondary: #B7C6BF;
+    --text-muted: #7C8C84;
+    --border: rgba(241,247,244,0.10);
+    --series-teal: #199e70;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page-bg: #0C1412;
+  --surface: #121C19;
+  --text-primary: #F1F7F4;
+  --text-secondary: #B7C6BF;
+  --text-muted: #7C8C84;
+  --border: rgba(241,247,244,0.10);
+  --series-teal: #199e70;
+}
+* { box-sizing: border-box; }
+html { background: var(--page-bg); }
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.12em;
+  color: var(--series-teal);
+  font-weight: 600;
+}
+h1 { font-size: clamp(26px, 4vw, 34px); margin: 10px 0 8px; font-weight: 800; }
+p.lead { color: var(--text-secondary); max-width: 62ch; }
+.cards { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+a.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .15s ease;
+}
+a.card:hover { border-color: var(--series-teal); }
+a.card .name { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+a.card .desc { font-size: 14px; color: var(--text-secondary); }
+footer { margin-top: 48px; font-size: 12.5px; color: var(--text-muted); }
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">PUBLIC DATA INSIGHTS</div>
+  <h1>공공데이터 인사이트 리포트</h1>
+  <p class="lead">한국 공공데이터를 정제·분석해 인사이트와 실행 가능한 개선 액션을 도출하는 리포트 모음입니다. 소스 노트북은 저장소의 <code>datasets/</code>에 있습니다.</p>
+
+  <div class="cards">
+    <a class="card" href="./seoul_bike_report.html">
+      <div class="name">🚲 서울 공공자전거 데이터 분석</div>
+      <div class="desc">신규가입자·외국인 대여 트렌드, 코로나 전후 비교, 대여소 핫스팟</div>
+    </a>
+    <a class="card" href="./rail_parking_report.html">
+      <div class="name">🚉 한국철도공사 역별 주차장 현황 분석</div>
+      <div class="desc">역별·지역본부별 주차 공급 규모와 수도권·비수도권 격차</div>
+    </a>
+  </div>
+
+  <footer>소스: <a href="https://github.com/crazycat1201/Seoul_Bike" style="color:var(--text-secondary)">github.com/crazycat1201/Seoul_Bike</a></footer>
+</div>
