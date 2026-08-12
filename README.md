@@ -8,7 +8,7 @@
 |---|---|---|---|
 | [`datasets/seoul_bike/`](./datasets/seoul_bike/) | [`Seoul_Bike_Insight_Analysis.ipynb`](./datasets/seoul_bike/Seoul_Bike_Insight_Analysis.ipynb) | [`docs/seoul_bike_report.html`](./docs/seoul_bike_report.html) | 서울 공공자전거(따릉이) 신규가입자·외국인 대여 트렌드, 코로나 전후 비교, 대여소 핫스팟 |
 | [`datasets/rail_parking/`](./datasets/rail_parking/) | [`Rail_Parking_Insight_Analysis.ipynb`](./datasets/rail_parking/Rail_Parking_Insight_Analysis.ipynb) | [`docs/rail_parking_report.html`](./docs/rail_parking_report.html) | 한국철도공사 역별 주차장 공급 규모·지역본부 간 격차 분석 |
-| [`datasets/kra_purchase_trend/`](./datasets/kra_purchase_trend/) | [`KRA_Purchase_Trend_Insight_Analysis.ipynb`](./datasets/kra_purchase_trend/KRA_Purchase_Trend_Insight_Analysis.ipynb) | [`docs/kra_purchase_trend_report.html`](./docs/kra_purchase_trend_report.html) | 한국마사회 구매성향분석 — 경주 개최지·판매 채널 쏠림, 채널별 구매 행태 |
+| [`datasets/kra_purchase_trend/`](./datasets/kra_purchase_trend/) | [`KRA_Purchase_Trend_Insight_Analysis.ipynb`](./datasets/kra_purchase_trend/KRA_Purchase_Trend_Insight_Analysis.ipynb) | [`docs/kra_purchase_trend_report.html`](./docs/kra_purchase_trend_report.html) | 한국마사회 구매성향분석 — 경주 개최지·판매 채널 쏠림(매년 심화), 채널별 구매 행태 |
 
 시각화 리포트는 `docs/`에 정적 HTML로 저장되어 있고, GitHub Pages(Settings → Pages → `main` / `docs`)로 배포되어 있습니다. **https://crazycat1201.github.io/Public-Data-Insights/** 에서 [`docs/index.html`](./docs/index.html)을 통해 두 리포트에 바로 접근할 수 있습니다.
 
